@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+        body{
+  background-color:#e84f09;
+}
+.box
+{
+  margin-right:auto;
+  margin-left:auto;
+  text-align:center;
+  padding-top:80px;
+  padding-right:0px;
+  padding-left:50px;
+  width:13em; 
+  height:300px;
+  background-color:whitesmoke;
+  border-radius:10px;
+}
+.LC
+{
+  text-align:center;
+  margin-bottom:50px;
+  margin-top:50px;
+}
+
+input
+{
+  border:none;
+  outline:none;
+  display:block;
+  color:#443b37;
+  font-size:1.5em;
+  background-color:whitesmoke;
+  border-bottom-style:solid;
+  border-bottom-color:grey;
+  width:175px;
+}
+button
+{
+  border:none;
+  height:50px;
+  width:50px;
+  background-color:whitesmoke;
+  margin-right:80px;
+}
+span
+{
+  color:grey;
+  font-size:20px;
+  margin-right:80px;
+  padding-top:30px;
+}</style>
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+        $(document).ready(function(){
+  $('#reset').hide();
+  $('button').on("click",function(e){
+    
+e.preventDefault();
+    var inputOne = $('.boys').val();
+    var inputTwo = $('.girls').val();
+    var flames = ['Friends','Love','Affair','Marriage','Enemy','Sister'];
+    if(inputOne!="" && inputTwo!="")
+      {
+       
+       var lengthInput = inputOne.length+inputTwo.length; 
+       //alert(lengthInput);
+        while(flames.length != 1)
+      {
+        flames = flames.splice(lengthInput%6,1);
+      }
+        change();
+        $('span').html("Result:   "+flames);
+      }
+    else{
+      alert("Fill out both the fields");
+    }
+    function change()
+    {
+      $('input').hide();
+      $('#submit').hide();
+      $('#reset').show();
+      $('span').show();
+    }
+    function reset()
+    {
+      $('input').show();
+      $('#submit').show();
+      $('span').hide();
+      $('#reset').hide();
+     //  inputOne = "";
+     // inputTwo = "";
+      
+    }
+    $('#reset').on("click",reset);
+  });
+  
+  
+  
+});</script>
+<h1 class = "LC">F.L.A.M.E.S. Calculator</h1>
+
+<div class="box">
+    
+  <form name = "form1" action = "" method = "POST" enctype = "text/plain">
+      
+  <input class = "boys" type = "text" placeholder = "Boy's Name" name = "bname" required autofocus>
+  <br><br>
+  <input class = "girls" type = "text" placeholder = "Girl's Name" name = "gname" required autofocus>
+  <br><br>
+    <button title = "Click on it to check the result" id = "submit" class = "fa fa-heart" style="font-size:30px" value = "Submit"></button>
+      <br>
+    </form>
+    
+    <span></span>
+  <br>
+  <button title = "Click on it to reset" class = "fa fa-heart" id = "reset" style="font-size:30px" value = "Submit"></button>
+</div>
+  
+    </body>
+</html>
